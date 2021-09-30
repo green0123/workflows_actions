@@ -1,1 +1,23 @@
+name: workflow-1
+# on git push this workflow will run
+on:
+  push:
+  pull_request:
+    types: [opened,reopened,assigned]
 
+jobs:
+# Workflow has jobs which run on different servers. Each job has steps.
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+  # Use checkout action
+      - name: step-1-clone repo
+        uses: actions/checkout@v2
+        # Multi-Line Command
+      - name: step-2-check_files
+        run: |
+          ls -al
+          sudo apt-get install tree -y
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_EVENT_NAME
+          echo $GITHUB_REPOSITORY
