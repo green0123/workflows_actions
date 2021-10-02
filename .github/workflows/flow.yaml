@@ -11,9 +11,9 @@ on:
       # To make above work - feature/**
       - (!feature/feat1) # we don't the workflow to be triggered
     paths:
-      - `*.md`
-      - `images/*`
-      - `docs/*`
+      - '*.md'
+      - 'images/*'
+      - 'docs/*'
 jobs:
   job-1:
     runs-on: ubuntu-latest
