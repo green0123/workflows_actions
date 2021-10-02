@@ -1,25 +1,27 @@
-# Filter by branch, path, tags
 name: workflow-1
-# on git push this workflow will run
 on:
   push:
     branches:
-      - main
-      - feature/*
-      # works -  feature/feat1
-      # doesn't work - feature/feat/feature
-      # To make above work - feature/**
-      - (!feature/feat1) # we don't the workflow to be triggered
-    paths:
-      - 'src/*' # only if change is made in this directory, workflow will be triggered
-      - '!(*.md)' # change/add of *.md will not trigger workflow
-      - '!(images/*)' # wont be triggered any additions to images/
+      - master
+
+env:
+    - workflow_env: 'global env1'
+    - workflow_env_2: 'global env2'
+
 jobs:
   job-1:
     runs-on: ubuntu-latest
+    env:
+      - job_env: 'job env1'
+      - job_env_2: 'job env2'
     steps:
-      - name: step-1-check_os
+      - name: step-1
+        env:
+            - step_env: 'step env1'
         run: |
-          echo  Repo Name: $GITHUB_REPOSITORY
-          echo Event that triggered workflow: $GITHUB_EVENT_NAME
-          echo Owner of Repo: $GITHUB_ACTOR
+          echo ${workflow_env}
+          echo ${workflow_env_2}
+          echo ${job_env}
+          echo ${job_env_2}
+          echo ${step_env}
+          echo ${GITHUB_SHA}
