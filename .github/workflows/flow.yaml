@@ -11,9 +11,9 @@ on:
       # To make above work - feature/**
       - (!feature/feat1) # we don't the workflow to be triggered
     paths:
-      - 'src/*'
-      - '!(*.md)'
-      - '!(images/*)'
+      - 'src/*' # only if change is made in this directory, workflow will be triggered
+      - '!(*.md)' # change/add of *.md will not trigger workflow
+      - '!(images/*)' # wont be triggered any additions to images/
 jobs:
   job-1:
     runs-on: ubuntu-latest
