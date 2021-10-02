@@ -12,7 +12,7 @@ on:
       - (!feature/feat1) # we don't the workflow to be triggered
     paths:
       - '*.md'
-      - 'images/*'
+      - '!(images/*)'
       - 'docs/*'
 jobs:
   job-1:
