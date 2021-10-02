@@ -1,23 +1,19 @@
+# Filter by branch, path, tags
 name: workflow-1
 # on git push this workflow will run
 on:
   push:
-  pull_request:
-    types: [opened,reopened,assigned]
-
+    branches:
+      - master
+      - feature/*
+      - (!feature/feat1)
 jobs:
-# Workflow has jobs which run on different servers. Each job has steps.
   job-1:
     runs-on: ubuntu-latest
     steps:
-  # Use checkout action
-      - name: step-1-clone repo
-        uses: actions/checkout@v2
-        # Multi-Line Command
-      - name: step-2-check_files
+      - name: step-1-check_os
         run: |
-          ls -al
-          sudo apt-get install tree -y
-          echo $GITHUB_WORKSPACE
-          echo $GITHUB_EVENT_NAME
-          echo $GITHUB_REPOSITORY
+          echo  Repo Name: $GITHUB_REPOSITORY
+          echo Event that triggered workflow: $GITHUB_EVENT_NAME
+          echo Owner of Repo: $GITHUB_ACTOR
+          echo Github action path: $GITHUB_ACTION_PATH
