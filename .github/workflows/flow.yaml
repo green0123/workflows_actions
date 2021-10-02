@@ -12,8 +12,8 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     env:
-      - job_env: 'job env1'
-      - job_env_2: 'job env2'
+        job_env: 'job env1'
+        job_env_2: 'job env2'
     steps:
       - name: step-1
         env:
