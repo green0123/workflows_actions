@@ -5,8 +5,8 @@ on:
       - main
 
 env:
-    - workflow_env: 'global env1'
-    - workflow_env_2: 'global env2'
+    workflow_env: 'global env1'
+    workflow_env_2: 'global env2'
 
 jobs:
   job-1:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: step-1
         env:
-            - step_env: 'step env1'
+            step_env: 'step env1'
         run: |
           echo global: ${workflow_env}
           echo global: ${workflow_env_2}
@@ -27,7 +27,7 @@ jobs:
           echo commit id: ${GITHUB_SHA}
       - name: step-2
         env:
-            - step_2_env: 'step 2 env1'
+            step_2_env: 'step 2 env1'
         run: |
           echo global: ${workflow_env}
           echo global: ${workflow_env_2}
