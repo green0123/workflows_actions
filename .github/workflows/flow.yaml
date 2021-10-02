@@ -2,7 +2,7 @@ name: workflow-1
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
     - workflow_env: 'global env1'
@@ -19,9 +19,20 @@ jobs:
         env:
             - step_env: 'step env1'
         run: |
-          echo ${workflow_env}
-          echo ${workflow_env_2}
-          echo ${job_env}
-          echo ${job_env_2}
-          echo ${step_env}
-          echo ${GITHUB_SHA}
+          echo global: ${workflow_env}
+          echo global: ${workflow_env_2}
+          echo job level: ${job_env}
+          echo job level: ${job_env_2}
+          echo step level: ${step_env}
+          echo commit id: ${GITHUB_SHA}
+      - name: step-2
+        env:
+            - step_2_env: 'step 2 env1'
+        run: |
+          echo global: ${workflow_env}
+          echo global: ${workflow_env_2}
+          echo job level: ${job_env}
+          echo job level: ${job_env_2}
+          echo step 1 level: ${step_env}
+          echo step 2 level: ${step_2_env}
+          echo commit id: ${GITHUB_SHA}
