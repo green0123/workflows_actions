@@ -16,4 +16,3 @@ jobs:
           echo  Repo Name: $GITHUB_REPOSITORY
           echo Event that triggered workflow: $GITHUB_EVENT_NAME
           echo Owner of Repo: $GITHUB_ACTOR
-          echo Github action path: $GITHUB_ACTION_PATH
